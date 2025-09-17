@@ -359,7 +359,7 @@ const About = () => {
     {
       title: "Product Developer (Frontend)",
       company: "DCKAP Technologies",
-      period: "Apr 2024 - Sep 2024",
+      period: "Apr 2024 - Sep 2025",
       location: "Remote, India",
       description:
         "Developed scalable, pixel-perfect, and performance-optimized B2B dashboards by converting Figma designs into modular React.js UIs with Ant Design, Bootstrap, and SASS",
