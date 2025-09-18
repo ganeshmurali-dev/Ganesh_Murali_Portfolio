@@ -123,7 +123,7 @@ const Projects = () => {
       icon: Code2,
       status: "Completed",
       links: {
-        live: "#",
+        live: "https://github.com/Parasuraman-Annadurai/Palli-Application",
         github: "https://github.com/Parasuraman-Annadurai/Palli-Application"
       }
     },
