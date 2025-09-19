@@ -29,7 +29,7 @@ const Home = () => {
           transition={{ duration: 2, delay: 1 }}
           className="absolute top-32 left-10 text-xs font-mono text-primary"
         >
-          {'const developer = {'}
+          {/* {'const developer = {'} */}
         </motion.div>
         <motion.div
           initial={{ opacity: 0, x: 100 }}
@@ -37,7 +37,7 @@ const Home = () => {
           transition={{ duration: 2, delay: 1.5 }}
           className="absolute top-1/2 right-10 text-xs font-mono text-primary"
         >
-          {'skills: ["React", "TypeScript"]'}
+          {/* {'skills: ["React", "TypeScript"]'} */}
         </motion.div>
         <motion.div
           initial={{ opacity: 0, y: 50 }}

@@ -305,7 +305,8 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Mail, Github, Linkedin, Instagram, MapPin, Phone } from "lucide-react";
+import { Mail, Github, Linkedin, Instagram, MapPin, Phone, ClipboardCopy } from "lucide-react";
+import { useState } from "react";
 
 const Contact = () => {
   const ref = useRef(null);
@@ -410,34 +411,57 @@ const Contact = () => {
                 <span className="font-mono">contactInfo()</span>
               </h3>
               <div className="space-y-5">
-                {contactInfo.map((info) => (
-                  <div
-                    key={info.label}
-                    className="flex items-center gap-4 p-4 rounded-lg border border-border hover:border-primary/50 transition-all duration-200 group"
-                  >
-                    <div className="p-2 rounded-lg bg-primary/20 border border-primary/30">
-                      <info.icon className="w-4 h-4 text-primary" />
+                {contactInfo.map((info) => {
+                  const [copied, setCopied] = useState(false);
+
+                  const handleCopy = () => {
+                    navigator.clipboard.writeText(info.value);
+                    setCopied(true);
+                    setTimeout(() => setCopied(false), 1000);
+                  };
+
+                  return (
+                    <div
+                      key={info.label}
+                      className="flex items-center gap-4 p-4 rounded-lg border border-border hover:border-primary/50 transition-all duration-200 group"
+                    >
+                      <div className="p-2 rounded-lg bg-primary/20 border border-primary/30">
+                        <info.icon className="w-4 h-4 text-primary" />
+                      </div>
+                      <div className="flex-1">
+                        <p className="text-sm font-mono text-muted-foreground">
+                          {info.label}
+                        </p>
+                        <div className="relative flex items-center gap-2">
+                          {info.label.toLowerCase() === "email" ? (
+                            <button
+                              onClick={handleCopy}
+                              className="text-foreground hover:text-primary transition-colors duration-200 text-left"
+                            >
+                              {info.value}
+                            </button>
+                          ) : info.href ? (
+                            <a
+                              href={info.href}
+                              className="text-foreground hover:text-primary transition-colors duration-200"
+                            >
+                              {info.value}
+                            </a>
+                          ) : (
+                            <p className="text-foreground">{info.value}</p>
+                          )}
+                          {info.label.toLowerCase() === "email" && copied && (
+                            <span className="absolute -top-6 left-1/2 -translate-x-1/2 text-xs text-primary bg-background px-2 py-0.5 rounded border border-primary/30 shadow-sm whitespace-nowrap">
+                              Email Copied!
+                            </span>
+                          )}
+                        </div>
+                      </div>
                     </div>
-                    <div>
-                      <p className="text-sm font-mono text-muted-foreground">
-                        {info.label}
-                      </p>
-                      {info.href ? (
-                        <a
-                          href={info.href}
-                          className="text-foreground hover:text-primary transition-colors duration-200"
-                        >
-                          {info.value}
-                        </a>
-                      ) : (
-                        <p className="text-foreground">{info.value}</p>
-                      )}
-                    </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </motion.div>
-
             {/* Social Links */}
             <motion.div
               variants={itemVariants}
