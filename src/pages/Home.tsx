@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 const Home = () => {
   const socialLinks = [
-    { icon: Github, href: 'https://github.com/Ganeshdckap', label: 'GitHub' },
+    { icon: Github, href: 'https://github.com/ganeshmurali-dev', label: 'GitHub' },
     { icon: Linkedin, href: 'https://www.linkedin.com/in/ganesh-murali-/', label: 'LinkedIn' },
     { icon: Instagram, href: 'https://www.instagram.com/__gane.sha__?igsh=MWk0Nmx2ZnNybXFvMA==', label: 'Instagram' },
   ];

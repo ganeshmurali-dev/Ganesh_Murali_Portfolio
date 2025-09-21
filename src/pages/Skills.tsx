@@ -287,7 +287,10 @@ const Skills = () => {
   const tools = [
     'GitHub', 'VS Code', 'Postman', 'WordPress',  
     'Bootstrap', 'Ant Design', 'Tailwind CSS', 'SASS',
-    'Figma', 'Vercel', 'Canva', 'PicsArt', 'Capcut', 'Snapseed',  
+    'Figma', 
+    // 'Responsive Design', 'SEO Optimization',
+    // 'Performance Optimization', 'PicsArt', 
+    'Canva', 'Capcut', 'Snapseed',  
   ];
 
   const containerVariants = {
