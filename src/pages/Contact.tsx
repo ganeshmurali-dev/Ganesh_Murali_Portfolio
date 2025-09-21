@@ -315,9 +315,9 @@ const Contact = () => {
   const socialLinks = [
     {
       icon: Github,
-      href: "https://github.com/Ganeshdckap",
+      href: "https://github.com/ganeshmurali-dev",
       label: "GitHub",
-      username: "Ganeshdckap",
+      username: "ganeshmurali-dev",
     },
     {
       icon: Linkedin,
