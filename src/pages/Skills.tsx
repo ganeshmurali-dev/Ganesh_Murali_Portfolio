@@ -242,7 +242,8 @@ import {
   Palette,
   Camera,
   Settings,
-  Layers
+  Layers,
+  Smartphone
 } from 'lucide-react';
 
 const Skills = () => {
@@ -251,19 +252,35 @@ const Skills = () => {
 
   const skillCategories = [
     {
+      title: "Mobile Development",
+      icon: Smartphone,
+      color: "primary",
+      skills: [
+        "React Native", "Expo", "React Native CLI", "iOS Development", "Android Development", "Metro Bundler", "Jest", "React Testing Library", "Detox"
+      ]
+    },
+    {
       title: "Frontend Development",
       icon: Code2,
       color: "primary",
       skills: [
-        "React.js", "JavaScript", "TypeScript", "HTML", "CSS/SCSS", "Tailwind CSS", "Bootstrap","Ant Design", "Figma to Code","Responsive","Performance Optimization", "GitHub"
+        "Next.js 15", "React 18/19", "TypeScript", "JavaScript (ES6+)", "HTML", "CSS/SCSS", "Tailwind CSS", "Bootstrap", "Ant Design", "Radix UI", "shadcn/ui", "Figma to Code", "Responsive", "Performance Optimization"
       ]
     },
+    // {
+    //   title: "State Management & Data",
+    //   icon: Layers,
+    //   color: "primary",
+    //   skills: [
+    //     "Redux Toolkit", "TanStack React Query", "Zustand", "Context API", "REST APIs", "GraphQL"
+    //   ]
+    // },
     {
       title: "UI/UX Design",
       icon: Palette,
       color: "accent",
       skills: [
-        "Figma", "Design Systems", "Wireframing", "Prototyping","Typography", "User Research","User Flows", "Responsive Layouts", "Canva","Invitations","Presentations"
+        "Figma", "Design Systems", "Wireframing", "Prototyping", "Typography", "User Research", "User Flows", "Responsive Layouts", "Canva", "Invitations", "Presentations"
       ]
     },
     {
@@ -271,7 +288,7 @@ const Skills = () => {
       icon: Camera,
       color: "accent",
       skills: [
-        "Portrait", "Street Photography", "Landscape Photography","Candid Photography", "Photo Editing", "CapCut","Snapseed", "PicsArt", "Video Editing (Reels/Shorts)"
+        "Portrait", "Street Photography", "Landscape Photography", "Candid Photography", "Photo Editing", "CapCut", "Snapseed", "PicsArt", "Video Editing (Reels/Shorts)"
       ]
     },
     {
@@ -279,18 +296,17 @@ const Skills = () => {
       icon: Settings,
       color: "primary",
       skills: [
-        "Salesforce", "HubSpot", "P21 ERP", "EvaluationX", "Shopify","ERP/CRM Integrations", "BigCommerce", "WooCommerce", "Magento 2","Data Mapping"
+        "Salesforce", "HubSpot", "P21 ERP", "EvaluationX", "Shopify", "ERP/CRM Integrations", "BigCommerce", "WooCommerce", "Magento 2", "Data Mapping"
       ]
     }
   ];
 
   const tools = [
-    'GitHub', 'VS Code', 'Postman', 'WordPress',  
-    'Bootstrap', 'Ant Design', 'Tailwind CSS', 'SASS',
-    'Figma', 
-    // 'Responsive Design', 'SEO Optimization',
-    // 'Performance Optimization', 'PicsArt', 
-    'Canva', 'Capcut', 'Snapseed',  
+    'Git & GitHub', 'VS Code', 'Postman', 'WordPress',
+    'Firebase Analytics', 'CleverTap', 'AppsFlyer',
+    // 'Webpack', Prettier
+    , 'ESLint', 'Bootstrap', 'Ant Design', 'Tailwind CSS', 'SASS',
+    'Figma', 'Canva', 'CapCut', 'Snapseed'
   ];
 
   const containerVariants = {

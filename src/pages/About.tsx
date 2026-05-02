@@ -357,6 +357,14 @@ const About = () => {
 
   const experienceList = [
     {
+      title: "Software Engineer Frontend",
+      company: "ASTROKURE AI PRIVATE LIMITED",
+      period: "Oct 2025 - Present",
+      location: "Chennai, India",
+      description:
+        "Building cross-platform mobile apps (iOS/Android) and web platform in a monorepo using React Native, Expo, Next.js 15, TypeScript, Redux Toolkit, and modern UI libraries. Integrated analytics with Firebase, CleverTap, and AppsFlyer for AI-powered astrology platform.",
+    },
+    {
       title: "Product Developer (Frontend)",
       company: "DCKAP Technologies",
       period: "Apr 2024 - Sep 2025",
@@ -425,11 +433,11 @@ const About = () => {
               </h2>
               <p className="text-muted-foreground leading-relaxed">
                 I'm <span className="font-bold">Ganesh</span>, a passionate
-                Frontend Developer & UI/UX Designer with 2+ years of IT
-                experience. I specialize in creating responsive web application, sleek
-                user interfaces, and crafting digital experiences that are both
-                functional and beautiful. Outside of coding, I love photography
-                and freelancing projects.
+                Mobile & Frontend Developer with 2+ years of IT
+                experience. I specialize in building cross-platform mobile applications 
+                with React Native, crafting responsive web applications, and designing 
+                beautiful user interfaces. Currently working on AI-powered mobile solutions. 
+                Outside of coding, I love photography and freelancing projects.
               </p>
               <div className="flex gap-4">
                 <a
@@ -536,25 +544,12 @@ const About = () => {
               </h3>
               <div className="flex flex-wrap justify-center gap-3 mb-6">
                 {[
+                  "Mobile App Development",
                   "Frontend Development",
                   "UI/UX Design",
                   "WordPress Development",
                   "Integration Development",
                   "Photography & Editing",
-                  // "Tailwind CSS",
-                  // "Bootstrap",
-                  // "Ant Design",
-                  // "UI/UX Design",
-                  // "Figma",
-                  // "Responsive Design",                  
-                  // "Web Performance Optimization",
-                  // "Photography",
-                  // "Salesforce",
-                  // "HubSpot",
-                  // "P21",
-                  // "ERP/CRM Integrations",
-                  // "WordPress",
-                  // "GitHub",
                 ].map((skill) => (
                   <span
                     key={skill}

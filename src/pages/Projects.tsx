@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { ExternalLink, Github, Code2, Figma, Database, Store, Camera, Globe  } from 'lucide-react';
+import { ExternalLink, Github, Code2, Figma, Database, Store, Camera, Globe, RefreshCw, Smartphone  } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const Projects = () => {
@@ -9,6 +9,29 @@ const Projects = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   const projects = [
+    {
+      title: "AstroSure.ai - AI Astrology Platform",
+      description: "Built cross-platform mobile (iOS/Android) and web app in a monorepo with React Native, Expo, Next.js 15, TypeScript, Redux Toolkit, and modern UI libraries. Integrated analytics with Firebase, CleverTap, and AppsFlyer.",
+      technologies: ["React Native", "Next.js 15", "TypeScript", "Redux Toolkit", "TanStack Query", "Tailwind CSS", "Radix UI", "shadcn/ui", "Expo", "Firebase", "CleverTap", "AppsFlyer"],
+      category: "Mobile & Web Development (Monorepo)",
+      icon: Smartphone,
+      status: "Live",
+      links: {
+        live: "https://play.google.com/store/apps/details?id=com.astrosureai",
+        // github: ""
+      }
+    },
+    {
+      title: "Wagtail to WordPress CMS Migration",
+      description: "Migrated blog content from Wagtail to WordPress using Python scripts for XML-to-WXR transformation. Fixed metadata, images, and links while converting content to Gutenberg blocks and optimizing via REST API.",
+      technologies: ["Python", "WordPress", "Wagtail CMS", "XML", "WXR", "Gutenberg", "REST API", "PHP"],
+      category: "CMS Migration / Backend Development",
+      icon: RefreshCw,
+      status: "Live",
+      links: {
+        live: "https://astrosure.ai/insights"
+      }
+    },
     {
       title: "Clinx",
       description: "Developed and deployed a responsive web application with a clean, user-friendly interface optimized for all devices.",
@@ -213,7 +236,7 @@ const Projects = () => {
                 </div>
 
                 {/* Project Description */}
-                <p className="text-muted-foreground text-sm leading-relaxed mb-4 line-clamp-3">
+                <p className="text-muted-foreground text-sm leading-relaxed mb-4">
                   {project.description}
                 </p>
 
