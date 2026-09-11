@@ -5,22 +5,21 @@ import { Moon, Sun, Menu, X, Code2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const DevNavigation = () => {
-  const [isDark, setIsDark] = useState(false);
+  const [isDark, setIsDark] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
-    const darkMode = localStorage.getItem('theme') === 'dark';
+    const stored = localStorage.getItem('theme');
+    const darkMode = stored ? stored === 'dark' : true;
     setIsDark(darkMode);
-    if (darkMode) {
-      document.documentElement.classList.add('dark');
-    }
+    document.documentElement.classList.toggle('dark', darkMode);
   }, []);
 
   const toggleTheme = () => {
     const newTheme = !isDark;
     setIsDark(newTheme);
-    document.documentElement.classList.toggle('dark');
+    document.documentElement.classList.toggle('dark', newTheme);
     localStorage.setItem('theme', newTheme ? 'dark' : 'light');
   };
 
@@ -33,31 +32,39 @@ const DevNavigation = () => {
   ];
 
   return (
-    <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border"
+    <motion.header
+      initial={{ y: -80, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      className="fixed top-0 left-0 right-0 z-50 px-4 pt-4"
     >
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
+      <nav className="container mx-auto max-w-6xl">
+        <div className="flex items-center justify-between h-16 px-4 sm:px-6 rounded-2xl border border-border bg-card/70 backdrop-blur-xl shadow-medium">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2 text-xl font-bold">
-            <div className="p-2 rounded bg-gradient-primary">
+          <Link to="/" className="flex items-center space-x-2 text-xl font-bold shrink-0">
+            <div className="p-2 rounded-xl bg-gradient-primary">
               <Code2 className="w-5 h-5 text-primary-foreground" />
             </div>
             <span className="gradient-text">{'<GM />'}</span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center gap-1 rounded-full border border-border/60 bg-background/40 p-1">
             {navItems.map((item) => (
               <Link
                 key={item.path}
                 to={item.path}
-                className="relative group text-sm font-mono"
+                className="relative px-4 py-2 text-sm font-mono rounded-full"
               >
+                {location.pathname === item.path && (
+                  <motion.span
+                    layoutId="activeTab"
+                    className="absolute inset-0 rounded-full bg-primary/15 border border-primary/30"
+                    transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                  />
+                )}
                 <span
-                  className={`${
+                  className={`relative z-10 ${
                     location.pathname === item.path
                       ? 'text-primary'
                       : 'text-muted-foreground hover:text-foreground'
@@ -65,24 +72,18 @@ const DevNavigation = () => {
                 >
                   {item.code}
                 </span>
-                {location.pathname === item.path && (
-                  <motion.div
-                    layoutId="activeTab"
-                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary"
-                    transition={{ type: "spring", stiffness: 400, damping: 30 }}
-                  />
-                )}
               </Link>
             ))}
           </div>
 
           {/* Theme Toggle & Mobile Menu */}
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center gap-2 shrink-0">
             <Button
               variant="ghost"
               size="sm"
               onClick={toggleTheme}
-              className="p-2"
+              className="p-2 rounded-xl"
+              aria-label="Toggle theme"
             >
               {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
             </Button>
@@ -90,8 +91,9 @@ const DevNavigation = () => {
             <Button
               variant="ghost"
               size="sm"
-              className="md:hidden p-2"
+              className="md:hidden p-2 rounded-xl"
               onClick={() => setIsOpen(!isOpen)}
+              aria-label="Toggle menu"
             >
               {isOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
             </Button>
@@ -101,22 +103,22 @@ const DevNavigation = () => {
         {/* Mobile Navigation */}
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden py-4 border-t border-border"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            className="md:hidden mt-2 p-2 rounded-2xl border border-border bg-card/90 backdrop-blur-xl shadow-medium"
           >
             {navItems.map((item, index) => (
               <motion.div
                 key={item.path}
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: index * 0.1 }}
+                transition={{ delay: index * 0.06 }}
               >
                 <Link
                   to={item.path}
                   onClick={() => setIsOpen(false)}
-                  className={`block py-2 px-4 rounded font-mono text-sm ${
+                  className={`block py-2.5 px-4 rounded-xl font-mono text-sm ${
                     location.pathname === item.path
                       ? 'text-primary bg-primary/10'
                       : 'text-muted-foreground hover:text-foreground hover:bg-muted'
@@ -128,8 +130,8 @@ const DevNavigation = () => {
             ))}
           </motion.div>
         )}
-      </div>
-    </motion.nav>
+      </nav>
+    </motion.header>
   );
 };
 

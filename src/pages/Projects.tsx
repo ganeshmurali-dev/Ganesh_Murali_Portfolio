@@ -1,8 +1,9 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { ExternalLink, Github, Code2, Figma, Database, Store, Camera, Globe, RefreshCw, Smartphone  } from 'lucide-react';
+import { ExternalLink, Github, Code2, Figma, Database, Store, Camera, Globe, RefreshCw, Smartphone, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import BentoCard from '@/components/BentoCard';
 
 const Projects = () => {
   const ref = useRef(null);
@@ -16,6 +17,7 @@ const Projects = () => {
       category: "Mobile & Web Development (Monorepo)",
       icon: Smartphone,
       status: "Live",
+      featured: true,
       links: {
         live: "https://play.google.com/store/apps/details?id=com.astrosureai",
         // github: ""
@@ -156,21 +158,27 @@ const Projects = () => {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.2 }
+      transition: { staggerChildren: 0.12 }
     }
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6 }
+      transition: { duration: 0.5 }
     }
   };
 
+  const statusClasses: Record<string, string> = {
+    Live: 'bg-primary/15 text-primary',
+    Ongoing: 'bg-accent/15 text-accent',
+    Completed: 'bg-muted text-muted-foreground',
+  };
+
   return (
-    <div className="min-h-screen pt-20 pb-10">
+    <div className="min-h-screen pt-28 pb-16">
       <div className="container mx-auto px-4">
         <motion.div
           ref={ref}
@@ -180,43 +188,36 @@ const Projects = () => {
           className="max-w-7xl mx-auto"
         >
           {/* Section Header */}
-          <motion.div variants={itemVariants} className="text-center mb-16">
-            <motion.div className="inline-flex items-center gap-2 px-4 py-2 bg-card border border-border rounded-lg mb-6">
+          <motion.div variants={itemVariants} className="text-center mb-14">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-card border border-border rounded-full mb-6">
               <span className="text-sm font-mono text-muted-foreground">
                 const myProjects = () =&gt; {'{'}
               </span>
-            </motion.div>
-            <motion.h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
+            </div>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
               My <span className="gradient-text">Projects</span>
-            </motion.h1>
-            <motion.p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-4">
+            </h1>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-4">
               A collection of projects showcasing my skills in web development, design, and integration
-            </motion.p>
-            <motion.div className="text-sm font-mono text-muted-foreground">
-              {'}'};
-            </motion.div>
+            </p>
+            <div className="text-sm font-mono text-muted-foreground">{'}'};</div>
           </motion.div>
 
-          {/* Projects Grid */}
-          <motion.div
-            variants={containerVariants}
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
-          >
-            {projects.map((project, index) => (
-              <motion.div
+          {/* Bento Projects Grid */}
+          <div className="bento-grid">
+            {projects.map((project) => (
+              <BentoCard
                 key={project.title}
-                variants={itemVariants}
-                whileHover={{ y: -8 }}
-                className="group glass p-6 rounded-2xl shadow-medium hover:shadow-large transition-all duration-300 border border-border hover:border-primary/50"
+                className={project.featured ? 'sm:col-span-2 lg:col-span-2' : ''}
               >
                 {/* Project Header */}
-                <div className="flex items-start justify-between mb-4">
-                  <div className="flex items-center gap-3">
-                    <div className="p-2 rounded-lg bg-primary/20 border border-primary/30">
+                <div className="flex items-start justify-between mb-4 gap-3">
+                  <div className="flex items-center gap-3 min-w-0">
+                    <div className="p-2 rounded-xl bg-primary/15 border border-primary/30 shrink-0">
                       <project.icon className="w-5 h-5 text-primary" />
                     </div>
-                    <div>
-                      <h3 className="text-lg font-semibold group-hover:text-primary transition-colors duration-200">
+                    <div className="min-w-0">
+                      <h3 className="text-lg font-semibold truncate">
                         {project.title}
                       </h3>
                       <span className="text-xs text-muted-foreground font-mono">
@@ -224,13 +225,7 @@ const Projects = () => {
                       </span>
                     </div>
                   </div>
-                  <span className={`text-xs font-mono px-2 py-1 rounded-full ${
-                    project.status === 'Live' 
-                      ? 'bg-primary/20 text-primary' 
-                      : project.status === 'Ongoing'
-                      ? 'bg-accent/20 text-accent'
-                      : 'bg-muted text-muted-foreground'
-                  }`}>
+                  <span className={`text-xs font-mono px-2 py-1 rounded-full shrink-0 ${statusClasses[project.status] ?? statusClasses.Completed}`}>
                     {project.status}
                   </span>
                 </div>
@@ -242,25 +237,17 @@ const Projects = () => {
 
                 {/* Technologies */}
                 <div className="flex flex-wrap gap-2 mb-6">
-                  {project.technologies.map((tech, techIndex) => (
-                    <span
-                      key={tech}
-                      className="text-xs font-mono px-2 py-1 bg-card border border-border rounded text-foreground"
-                    >
+                  {project.technologies.map((tech) => (
+                    <span key={tech} className="tag">
                       {tech}
                     </span>
                   ))}
                 </div>
 
                 {/* Project Links */}
-                <div className="flex items-center gap-2 pt-4 border-t border-border">
+                <div className="flex items-center gap-2 pt-4 border-t border-border mt-auto">
                   {project.links.live && (
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="flex-1 group/btn"
-                      asChild
-                    >
+                    <Button variant="outline" size="sm" className="flex-1 group/btn" asChild>
                       <a href={project.links.live} target="_blank" rel="noopener noreferrer">
                         <ExternalLink className="w-3 h-3 mr-2 group-hover/btn:translate-x-0.5 transition-transform duration-200" />
                         <span className="font-mono text-xs">View Project</span>
@@ -268,37 +255,33 @@ const Projects = () => {
                     </Button>
                   )}
                   {project.links.github && (
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      className="p-2"
-                      asChild
-                    >
+                    <Button variant="ghost" size="sm" className="p-2" asChild>
                       <a href={project.links.github} target="_blank" rel="noopener noreferrer">
                         <Github className="w-4 h-4" />
                       </a>
                     </Button>
                   )}
                 </div>
-              </motion.div>
+              </BentoCard>
             ))}
-          </motion.div>
 
-          {/* Call to Action */}
-          <motion.div variants={itemVariants} className="mt-16 text-center">
-            <motion.div className="glass p-8 rounded-2xl">
+            {/* Call to Action */}
+            <BentoCard className="sm:col-span-2 lg:col-span-4 items-center text-center" glow={false}>
               <h3 className="text-2xl font-semibold mb-4 font-mono">
                 {'// Interested in working together?'}
               </h3>
               <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-                I'm always excited to work on new projects and collaborate with talented teams. 
+                I'm always excited to work on new projects and collaborate with talented teams.
                 Let's create something amazing together!
               </p>
-              <Button size="lg" className="btn-hero" >
-                Let's Build Something Great
-              </Button>
-            </motion.div>
-          </motion.div>
+              <a href="/contact">
+                <Button size="lg" className="btn-hero group">
+                  Let's Build Something Great
+                  <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                </Button>
+              </a>
+            </BentoCard>
+          </div>
         </motion.div>
       </div>
     </div>

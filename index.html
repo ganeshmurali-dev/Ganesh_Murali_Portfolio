@@ -1,6 +1,13 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <script>
+      (function () {
+        var stored = localStorage.getItem('theme');
+        var isDark = stored ? stored === 'dark' : true;
+        if (isDark) document.documentElement.classList.add('dark');
+      })();
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ganesh Murali - Frontend Developer</title>
