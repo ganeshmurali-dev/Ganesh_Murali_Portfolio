@@ -5,6 +5,7 @@ import { MapPin, Briefcase, GraduationCap, Sparkles } from "lucide-react";
 import profileImage from "@/assets/profile-placeholder.jpg";
 import BentoCard from "@/components/BentoCard";
 import Seo from "@/components/Seo";
+import { Button } from "@/components/ui/button";
 
 const About = () => {
   const ref = useRef(null);
@@ -115,16 +116,18 @@ const About = () => {
             className="bento-grid lg:auto-rows-[minmax(9.5rem,auto)] mb-20"
           >
             {/* Bio */}
-            <BentoCard className="sm:col-span-2 lg:row-span-3 flex-col sm:flex-row items-start gap-6">
-              <div className="relative w-28 h-28 sm:w-32 sm:h-32 shrink-0 mx-auto sm:mx-0">
-                <div className="absolute inset-0 bg-gradient-primary rounded-2xl opacity-20 blur-xl" />
+            <BentoCard
+              glow={false}
+              className="sm:col-span-2 lg:row-span-2 !p-0 flex-col sm:flex-row items-stretch"
+            >
+              <div className="relative w-full h-52 sm:h-auto sm:w-[38%] shrink-0">
                 <img
                   src={profileImage}
                   alt="Ganesh Murali, Frontend and Mobile Developer"
-                  className="relative w-full h-full object-cover rounded-2xl border-2 border-primary/20 shadow-large"
+                  className="absolute inset-0 w-full h-full object-cover rounded-t-2xl sm:rounded-t-none sm:rounded-l-2xl md:rounded-l-3xl"
                 />
               </div>
-              <div>
+              <div className="flex-1 m-3 sm:m-4 p-5 sm:p-6 rounded-xl sm:rounded-2xl bg-muted/40 flex flex-col justify-center">
                 <h2 className="text-xl font-semibold flex items-center gap-2 mb-3">
                   <MapPin className="w-4 h-4 text-primary" /> Based in India
                 </h2>
@@ -137,16 +140,14 @@ const About = () => {
                   photography and freelancing projects.
                 </p>
                 <div className="flex flex-wrap gap-3">
-                  <a href="/Ganesh_Murali_CV.pdf" download="Ganesh_Murali_CV.pdf">
-                    <button className="px-5 py-2 rounded-xl bg-primary/20 text-primary border border-primary/30 hover:bg-primary/30 transition">
+                  <Button asChild className="btn-hero">
+                    <a href="/Ganesh_Murali_CV.pdf" download="Ganesh_Murali_CV.pdf">
                       Download CV
-                    </button>
-                  </a>
-                  <a href="/contact">
-                    <button className="px-5 py-2 rounded-xl bg-card border border-border hover:bg-primary/10 transition">
-                      Contact Me
-                    </button>
-                  </a>
+                    </a>
+                  </Button>
+                  <Button asChild variant="outline" className="btn-secondary">
+                    <a href="/contact">Contact Me</a>
+                  </Button>
                 </div>
               </div>
             </BentoCard>
@@ -175,7 +176,7 @@ const About = () => {
             </BentoCard>
 
             {/* Core skills */}
-            <BentoCard className="sm:col-span-2 lg:col-span-2">
+            <BentoCard className="sm:col-span-2 lg:col-span-4">
               <div className="flex items-center gap-2 text-xs font-mono text-primary mb-4">
                 <Sparkles className="w-4 h-4" />
                 coreSkills()
