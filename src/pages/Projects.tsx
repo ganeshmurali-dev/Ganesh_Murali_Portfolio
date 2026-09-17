@@ -4,6 +4,7 @@ import { useRef } from 'react';
 import { ExternalLink, Github, Code2, Figma, Database, Store, Camera, Globe, RefreshCw, Smartphone, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import BentoCard from '@/components/BentoCard';
+import Seo from '@/components/Seo';
 
 const Projects = () => {
   const ref = useRef(null);
@@ -179,6 +180,11 @@ const Projects = () => {
 
   return (
     <div className="min-h-screen pt-28 pb-16">
+      <Seo
+        title="Projects — Ganesh Murali"
+        description="A showcase of projects by Ganesh Murali including AstroSure.ai, freelance web builds, UI/UX case studies, and CMS migrations."
+        path="/projects"
+      />
       <div className="container mx-auto px-4">
         <motion.div
           ref={ref}

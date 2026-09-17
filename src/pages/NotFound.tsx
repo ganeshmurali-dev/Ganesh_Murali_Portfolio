@@ -2,6 +2,7 @@ import { useLocation, Link } from "react-router-dom";
 import { useEffect } from "react";
 import { ArrowLeft } from "lucide-react";
 import BentoCard from "@/components/BentoCard";
+import Seo from "@/components/Seo";
 
 const NotFound = () => {
   const location = useLocation();
@@ -12,6 +13,12 @@ const NotFound = () => {
 
   return (
     <div className="flex min-h-screen items-center justify-center px-4">
+      <Seo
+        title="Page Not Found — Ganesh Murali"
+        description="The page you're looking for doesn't exist. Return to Ganesh Murali's portfolio home page."
+        path={location.pathname}
+        noIndex
+      />
       <BentoCard className="max-w-md text-center items-center" initial="visible">
         <span className="text-sm font-mono text-primary mb-4">// error 404</span>
         <h1 className="mb-2 text-6xl font-bold gradient-text">404</h1>

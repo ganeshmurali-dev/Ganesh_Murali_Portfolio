@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { MapPin, Briefcase, GraduationCap, Sparkles } from "lucide-react";
 import profileImage from "@/assets/profile-placeholder.jpg";
 import BentoCard from "@/components/BentoCard";
+import Seo from "@/components/Seo";
 
 const About = () => {
   const ref = useRef(null);
@@ -82,6 +83,11 @@ const About = () => {
 
   return (
     <div className="min-h-screen pt-28 pb-16">
+      <Seo
+        title="About — Ganesh Murali"
+        description="Learn about Ganesh Murali's background, education, and 3+ years of experience building frontend web and React Native mobile applications."
+        path="/about"
+      />
       <div className="container mx-auto px-4">
         <motion.div
           ref={ref}
@@ -114,7 +120,7 @@ const About = () => {
                 <div className="absolute inset-0 bg-gradient-primary rounded-2xl opacity-20 blur-xl" />
                 <img
                   src={profileImage}
-                  alt="Ganesh"
+                  alt="Ganesh Murali, Frontend and Mobile Developer"
                   className="relative w-full h-full object-cover rounded-2xl border-2 border-primary/20 shadow-large"
                 />
               </div>

@@ -1,0 +1,19 @@
+# Ganesh Murali
+
+> Frontend & Mobile Developer with 3+ years of experience building web and React Native mobile applications. Currently a Software Engineer (Frontend) at AstroKure AI Private Limited, working on an AI-powered astrology platform (web + iOS/Android).
+
+Ganesh Murali is a frontend and mobile developer based in Chennai, India, specializing in React.js, React Native, Next.js, and TypeScript. He also works on UI/UX design, WordPress/CMS development, and CRM/ERP integrations (Salesforce, HubSpot, Shopify).
+
+## Pages
+
+- [Home](https://ganeshmurali.dev/): Introduction, current focus, and quick facts.
+- [About](https://ganeshmurali.dev/about): Background, education, and work experience timeline.
+- [Skills](https://ganeshmurali.dev/skills): Technical skills across mobile, frontend, design, and integrations.
+- [Projects](https://ganeshmurali.dev/projects): Portfolio of shipped projects, including AstroSure.ai.
+- [Contact](https://ganeshmurali.dev/contact): Contact details and social links.
+
+## Contact
+
+- Email: ganeshmdckap@gmail.com
+- GitHub: https://github.com/ganeshmurali-dev
+- LinkedIn: https://www.linkedin.com/in/ganesh-murali-/

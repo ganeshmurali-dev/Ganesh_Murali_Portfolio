@@ -3,6 +3,7 @@ import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { Mail, Github, Linkedin, Instagram, MapPin, Phone } from "lucide-react";
 import BentoCard from "@/components/BentoCard";
+import Seo from "@/components/Seo";
 
 const Contact = () => {
   const ref = useRef(null);
@@ -69,6 +70,11 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen pt-28 pb-16">
+      <Seo
+        title="Contact — Ganesh Murali"
+        description="Get in touch with Ganesh Murali for freelance projects or full-time frontend and mobile developer opportunities."
+        path="/contact"
+      />
       <div className="container mx-auto px-4">
         <motion.div
           ref={ref}

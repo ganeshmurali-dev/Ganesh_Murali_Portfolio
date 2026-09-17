@@ -8,25 +8,42 @@
         if (isDark) document.documentElement.classList.add('dark');
       })();
     </script>
+    <script>
+      // Single Page Apps for GitHub Pages
+      // https://github.com/rafgraph/spa-github-pages
+      // Restores the real path encoded by 404.html before react-router mounts.
+      (function (l) {
+        if (l.search[1] === '/') {
+          var decoded = l.search
+            .slice(1)
+            .split('&')
+            .map(function (s) {
+              return s.replace(/~and~/g, '&');
+            })
+            .join('?');
+          window.history.replaceState(null, null, l.pathname.slice(0, -1) + decoded + l.hash);
+        }
+      })(window.location);
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ganesh Murali - Frontend Developer</title>
-    <meta name="description" content="Portfolio of Ganesh Murali - Frontend Developer, UI/UX Designer, Photographer & Integration Developer with 2+ years experience in React.js, modern web technologies." />
+    <meta name="theme-color" content="#0b0f19" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self';"
+    />
+    <!--
+      title/description/canonical/og/twitter tags are intentionally NOT
+      hardcoded here anymore - every route sets its own via the <Seo>
+      component (src/components/Seo.tsx) through react-helmet-async.
+      Helmet only dedupes tags it renders itself; a static duplicate left
+      here would coexist with the per-route one once JS runs, giving
+      crawlers two conflicting canonical/description tags per page.
+    -->
     <meta name="author" content="Ganesh Murali" />
-    <meta name="keywords" content="frontend developer, ui ux designer, react developer, web developer, photographer, integration developer, portfolio" />
-
-    <meta property="og:title" content="Ganesh Murali — Frontend Developer" />
-    <meta property="og:description" content="Professional portfolio showcasing modern web development, UI/UX design, and photography work. Specializing in React.js and responsive design." />
+    <meta name="keywords" content="frontend developer, react native developer, mobile app developer, ui ux designer, react developer, web developer, photographer, integration developer, portfolio" />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://ganeshmurali.dev/og-image.png" />
-    <!-- <meta property="og:image" content="http://localhost:8080/og-image.png" /> -->
-
-    
-    <meta property="og:url" content="https://ganeshmurali.dev/" />
-
     <meta name="twitter:card" content="summary_large_image" />
-    <!-- <meta name="twitter:site" content="@lovable_dev" /> -->
-    <meta name="twitter:image" content="https://ganeshmurali.dev/og-image.png" />
   </head>
 
   <body>

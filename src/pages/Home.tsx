@@ -16,6 +16,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import BentoCard from '@/components/BentoCard';
+import Seo from '@/components/Seo';
 
 const Home = () => {
   const socialLinks = [
@@ -36,6 +37,11 @@ const Home = () => {
 
   return (
     <div className="relative">
+      <Seo
+        title="Ganesh Murali — Frontend & Mobile Developer"
+        description="Frontend & React Native developer with 3+ years building web and mobile products. Explore my work in React.js, Next.js, TypeScript, and AI-powered apps."
+        path="/"
+      />
       {/* Hero */}
       <div className="min-h-screen flex items-center justify-center relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-hero opacity-30" />
@@ -138,6 +144,7 @@ const Home = () => {
                     key={social.label}
                     href={social.href}
                     target="_blank"
+                    rel="noopener noreferrer"
                     initial={{ opacity: 0, scale: 0 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.4, delay: 1.2 + index * 0.1 }}
