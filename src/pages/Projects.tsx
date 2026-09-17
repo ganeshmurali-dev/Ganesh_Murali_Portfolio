@@ -12,8 +12,8 @@ const Projects = () => {
   const projects = [
     {
       title: "AstroSure.ai - AI Astrology Platform",
-      description: "Built cross-platform mobile (iOS/Android) and web app in a monorepo with React Native, Expo, Next.js 15, TypeScript, Redux Toolkit, and modern UI libraries. Integrated analytics with Firebase, CleverTap, and AppsFlyer.",
-      technologies: ["React Native", "Next.js 15", "TypeScript", "Redux Toolkit", "TanStack Query", "Tailwind CSS", "Radix UI", "shadcn/ui", "Expo", "Firebase", "CleverTap", "AppsFlyer"],
+      description: "Built cross-platform mobile (iOS/Android) and web app in a monorepo with React Native CLI, Next.js 15, TypeScript, Redux Toolkit, and modern UI libraries. Integrated analytics with Firebase, CleverTap, and AppsFlyer.",
+      technologies: ["React Native CLI", "Next.js 15", "TypeScript", "Redux Toolkit", "TanStack Query", "Tailwind CSS", "Radix UI", "shadcn/ui", "Firebase", "CleverTap", "AppsFlyer"],
       category: "Mobile & Web Development (Monorepo)",
       icon: Smartphone,
       status: "Live",

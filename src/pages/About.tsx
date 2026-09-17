@@ -21,8 +21,15 @@ const About = () => {
 
   const educationList = [
     {
+      degree: "Master of Computer Applications (MCA)",
+      school: "University of Madras — (Distance)",
+      period: "2026 - 2028",
+      location: "Chennai, India",
+      desc: "Pursuing advanced computer science concepts alongside professional work experience.",
+    },
+    {
       degree: "Bachelor of Computer Applications (BCA)",
-      school: "University of Madras — (Correspondence)",
+      school: "University of Madras — (Distance)",
       period: "2022 - 2025",
       location: "Chennai, India",
       desc: "Focused on computer science fundamentals, projects, and applied IT knowledge.",
@@ -36,7 +43,7 @@ const About = () => {
       period: "Oct 2025 - Present",
       location: "Chennai, India",
       description:
-        "Building cross-platform mobile apps (iOS/Android) and web platform in a monorepo using React Native, Expo, Next.js 15, TypeScript, Redux Toolkit, and modern UI libraries. Integrated analytics with Firebase, CleverTap, and AppsFlyer for AI-powered astrology platform.",
+        "Building cross-platform mobile apps (iOS/Android) and web platform in a monorepo using React Native CLI, Next.js 15, TypeScript, Redux Toolkit, and modern UI libraries. Integrated analytics with Firebase, CleverTap, and AppsFlyer for AI-powered astrology platform.",
     },
     {
       title: "Product Developer (Frontend)",
@@ -117,7 +124,7 @@ const About = () => {
                 </h2>
                 <p className="text-muted-foreground leading-relaxed mb-6">
                   I'm <span className="font-bold text-foreground">Ganesh</span>, a passionate
-                  Mobile & Frontend Developer with 2+ years of IT experience. I specialize in
+                  Mobile & Frontend Developer with 3+ years of IT experience. I specialize in
                   building cross-platform mobile applications with React Native, crafting
                   responsive web applications, and designing beautiful user interfaces.
                   Currently working on AI-powered mobile solutions. Outside of coding, I love
@@ -145,7 +152,7 @@ const About = () => {
                 education()
               </div>
               {educationList.map((edu) => (
-                <div key={edu.degree}>
+                <div key={edu.degree} className="mb-6 last:mb-0 pb-6 last:pb-0 border-b last:border-0 border-border/60">
                   <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
                     <h4 className="font-semibold">{edu.degree}</h4>
                     <span className="text-xs font-mono px-3 py-1 bg-primary/10 text-primary rounded-full">

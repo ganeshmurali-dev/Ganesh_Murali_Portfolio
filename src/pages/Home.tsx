@@ -24,7 +24,7 @@ const Home = () => {
     { icon: Instagram, href: 'https://www.instagram.com/__gane.sha__?igsh=MWk0Nmx2ZnNybXFvMA==', label: 'Instagram' },
   ];
 
-  const stack = ['React Native', 'Next.js 15', 'TypeScript', 'Expo', 'Redux Toolkit', 'Tailwind CSS'];
+  const stack = ['React Native CLI', 'Next.js 15', 'TypeScript', 'Redux Toolkit', 'Tailwind CSS'];
 
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
@@ -191,7 +191,7 @@ const Home = () => {
             </h3>
             <p className="text-muted-foreground leading-relaxed mb-6">
               Cross-platform mobile & web app in a monorepo, built with React Native,
-              Expo, Next.js 15 and TypeScript — shipping AI-powered astrology experiences.
+              React Native CLI, Next.js 15 and TypeScript — shipping AI-powered astrology experiences.
             </p>
             <Link
               to="/projects"
@@ -204,7 +204,7 @@ const Home = () => {
           {/* Stat */}
           <BentoCard className="justify-center">
             <Clock className="w-5 h-5 text-primary mb-3" />
-            <div className="text-3xl font-bold gradient-text">2+ Years</div>
+            <div className="text-3xl font-bold gradient-text">3+ Years</div>
             <p className="text-xs font-mono text-muted-foreground mt-1">professional IT experience</p>
           </BentoCard>
 
