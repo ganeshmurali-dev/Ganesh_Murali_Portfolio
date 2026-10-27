@@ -38,14 +38,41 @@ const About = () => {
     },
   ];
 
-  const experienceList = [
+  const experienceList: {
+    title: string;
+    company: string;
+    period: string;
+    location: string;
+    description?: string;
+    achievements?: { label: string; text: string }[];
+  }[] = [
     {
       title: "Software Engineer Frontend",
       company: "AstroSure AI Private Limited",
       period: "Oct 2025 - Present",
-      location: "Chennai, India",
-      description:
-        "Building cross-platform mobile apps (iOS/Android) and web platform in a monorepo using React Native CLI, Next.js 15, TypeScript, Redux Toolkit, and modern UI libraries. Integrated analytics with Firebase, CleverTap, and AppsFlyer for AI-powered astrology platform.",
+      location: "Chennai, India (Hybrid)",
+      achievements: [
+        {
+          label: "Mobile & Web Platform",
+          text: "Built cross-platform mobile apps (iOS/Android) with React Native CLI and the web platform with Next.js 15 in a shared monorepo, using TypeScript, Redux Toolkit, and modern UI libraries.",
+        },
+        {
+          label: "OTA Updates (Hot Updater)",
+          text: "Implemented over-the-air updates using Hot Updater, shipping app updates without app store review and targeting rollouts to specific users.",
+        },
+        {
+          label: "Razorpay International Payments",
+          text: "Integrated Razorpay to support international payments alongside domestic transactions.",
+        },
+        {
+          label: "Wagtail to WordPress Migration",
+          text: "Migrated blog content from Wagtail to WordPress using Python scripts for XML-to-WXR transformation, converting content to Gutenberg blocks and optimizing via REST API.",
+        },
+        {
+          label: "Analytics Integration",
+          text: "Integrated Firebase, CleverTap, and AppsFlyer to track user behavior across the AI-powered astrology platform.",
+        },
+      ],
     },
     {
       title: "Product Developer (Frontend)",
@@ -207,7 +234,21 @@ const About = () => {
                     <p className="flex items-center gap-2 text-muted-foreground text-sm mt-1">
                       <MapPin className="w-4 h-4 text-primary" /> {exp.location}
                     </p>
-                    <p className="text-muted-foreground text-sm mt-2">{exp.description}</p>
+                    {exp.achievements ? (
+                      <ul className="mt-3 space-y-3">
+                        {exp.achievements.map((item) => (
+                          <li key={item.label} className="flex items-start gap-2.5">
+                            <span className="font-mono text-primary shrink-0" aria-hidden="true">{'>'}</span>
+                            <p className="text-muted-foreground text-sm">
+                              <span className="font-semibold text-foreground">{item.label} :</span>{' '}
+                              {item.text}
+                            </p>
+                          </li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <p className="text-muted-foreground text-sm mt-2">{exp.description}</p>
+                    )}
                   </div>
                 </motion.div>
               ))}

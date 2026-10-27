@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { ExternalLink, Github, Code2, Figma, Database, Store, Camera, Globe, RefreshCw, Smartphone, ArrowRight } from 'lucide-react';
+import { ExternalLink, Github, Code2, Figma, Database, Store, Camera, Globe, RefreshCw, Smartphone, ArrowRight, Gift } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import BentoCard from '@/components/BentoCard';
 import { handleSectionLinkClick } from '@/lib/scroll';
@@ -22,6 +22,17 @@ const Projects = () => {
       links: {
         live: "https://play.google.com/store/apps/details?id=com.astrosureai",
         // github: ""
+      }
+    },
+    {
+      title: "Digigift - Personalized Digital Gifts",
+      description: "Built a platform to create personalized digital gifts with messages, photos, short videos, and animated reveals. Users preview for free and pay once to unlock sharing via a private link or QR code.",
+      technologies: ["Next.js", "Prisma", "Razorpay", "Stripe", "Cloudflare R2"],
+      category: "Full-Stack Web Development (Personal Project)",
+      icon: Gift,
+      status: "Live",
+      links: {
+        live: "https://digigift.ganeshmurali.dev/",
       }
     },
     {
@@ -117,18 +128,18 @@ const Projects = () => {
     //     github: "#"
     //   }
     // },
-     {
-      title: "Laptop E-Commerce",
-      description: "Designed a laptop-focused e-commerce web interface in Figma with clean layouts and a consistent design system.",
-      technologies: ["Figma", "Color Theory", "Typography", "Iconography", "Design System", "Wireframing", "Version Control"],
-      category: "UI/UX Design",
-      icon: Figma,
-      status: "Completed",
-      links: {
-        live: "https://www.figma.com/proto/KIwAojsPiX9tWfq8RlgKtv/Laptop-e-commerce?node-id=1-12235&starting-point-node-id=1%3A12342",
-        // github: "#"
-      }
-    },
+    // {
+    //   title: "Laptop E-Commerce",
+    //   description: "Designed a laptop-focused e-commerce web interface in Figma with clean layouts and a consistent design system.",
+    //   technologies: ["Figma", "Color Theory", "Typography", "Iconography", "Design System", "Wireframing", "Version Control"],
+    //   category: "UI/UX Design",
+    //   icon: Figma,
+    //   status: "Completed",
+    //   links: {
+    //     live: "https://www.figma.com/proto/KIwAojsPiX9tWfq8RlgKtv/Laptop-e-commerce?node-id=1-12235&starting-point-node-id=1%3A12342",
+    //     // github: "#"
+    //   }
+    // },
       {
       title: "Photography Blog – WordPress",
       description: "Designed and managed a photography blog in WordPress with theme customization and organized visual content.",
@@ -141,18 +152,18 @@ const Projects = () => {
         // github: "#"
       }
     },
-    {
-      title: "Palli Application",
-      description: "Built a school application with multi-user logins, task tracking, assignment submissions, and admission form functionality.",
-      technologies: ["ReactJs", "HTML", "CSS", "Sass", "Figma", "Ant Design"],
-      category: "UI/UX & Frontend Development",
-      icon: Code2,
-      status: "Completed",
-      links: {
-        live: "https://github.com/Parasuraman-Annadurai/Palli-Application",
-        github: "https://github.com/Parasuraman-Annadurai/Palli-Application"
-      }
-    },
+    // {
+    //   title: "Palli Application",
+    //   description: "Built a school application with multi-user logins, task tracking, assignment submissions, and admission form functionality.",
+    //   technologies: ["ReactJs", "HTML", "CSS", "Sass", "Figma", "Ant Design"],
+    //   category: "UI/UX & Frontend Development",
+    //   icon: Code2,
+    //   status: "Completed",
+    //   links: {
+    //     live: "https://github.com/Parasuraman-Annadurai/Palli-Application",
+    //     github: "https://github.com/Parasuraman-Annadurai/Palli-Application"
+    //   }
+    // },
   ];
 
   const containerVariants = {
