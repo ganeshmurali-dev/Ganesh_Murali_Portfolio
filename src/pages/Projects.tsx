@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { ExternalLink, Github, Code2, Figma, Database, Store, Camera, Globe, RefreshCw, Smartphone, ArrowRight, Gift } from 'lucide-react';
+import { ExternalLink, Github, Code2, Figma, Database, Store, Camera, Globe, RefreshCw, Smartphone, ArrowRight, Gift, Apple, Play } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import BentoCard from '@/components/BentoCard';
 import { handleSectionLinkClick } from '@/lib/scroll';
@@ -20,8 +20,10 @@ const Projects = () => {
       status: "Live",
       featured: true,
       links: {
-        live: "https://play.google.com/store/apps/details?id=com.astrosureai",
-        // github: ""
+        live: "https://app.astrosure.ai/",
+        website: "https://astrosure.ai/",
+        android: "https://play.google.com/store/apps/details?id=com.astrosureai",
+        ios: "https://apps.apple.com/in/app/astrosure-ai/id6739531176",
       }
     },
     {
@@ -270,6 +272,27 @@ const Projects = () => {
                     <Button variant="ghost" size="sm" className="p-2" asChild>
                       <a href={project.links.github} target="_blank" rel="noopener noreferrer">
                         <Github className="w-4 h-4" />
+                      </a>
+                    </Button>
+                  )}
+                  {project.links.website && (
+                    <Button variant="ghost" size="sm" className="p-2" asChild>
+                      <a href={project.links.website} target="_blank" rel="noopener noreferrer" aria-label="Visit website">
+                        <Globe className="w-4 h-4" />
+                      </a>
+                    </Button>
+                  )}
+                  {project.links.android && (
+                    <Button variant="ghost" size="sm" className="p-2" asChild>
+                      <a href={project.links.android} target="_blank" rel="noopener noreferrer" aria-label="Get it on Google Play">
+                        <Play className="w-4 h-4" />
+                      </a>
+                    </Button>
+                  )}
+                  {project.links.ios && (
+                    <Button variant="ghost" size="sm" className="p-2" asChild>
+                      <a href={project.links.ios} target="_blank" rel="noopener noreferrer" aria-label="Download on the App Store">
+                        <Apple className="w-4 h-4" />
                       </a>
                     </Button>
                   )}
