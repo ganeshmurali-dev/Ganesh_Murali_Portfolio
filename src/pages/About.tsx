@@ -4,8 +4,8 @@ import { useRef } from "react";
 import { MapPin, Briefcase, GraduationCap, Sparkles } from "lucide-react";
 import profileImage from "@/assets/profile-placeholder.jpg";
 import BentoCard from "@/components/BentoCard";
-import Seo from "@/components/Seo";
 import { Button } from "@/components/ui/button";
+import { handleSectionLinkClick } from "@/lib/scroll";
 
 const About = () => {
   const ref = useRef(null);
@@ -41,7 +41,7 @@ const About = () => {
   const experienceList = [
     {
       title: "Software Engineer Frontend",
-      company: "ASTROKURE AI PRIVATE LIMITED",
+      company: "AstroSure AI Private Limited",
       period: "Oct 2025 - Present",
       location: "Chennai, India",
       description:
@@ -83,12 +83,7 @@ const About = () => {
   ];
 
   return (
-    <div className="min-h-screen pt-28 pb-16">
-      <Seo
-        title="About — Ganesh Murali"
-        description="Learn about Ganesh Murali's background, education, and 3+ years of experience building frontend web and React Native mobile applications."
-        path="/about"
-      />
+    <section id="about" className="scroll-mt-20 pt-20 pb-16">
       <div className="container mx-auto px-4">
         <motion.div
           ref={ref}
@@ -146,7 +141,7 @@ const About = () => {
                     </a>
                   </Button>
                   <Button asChild variant="outline" className="btn-secondary">
-                    <a href="/contact">Contact Me</a>
+                    <a href="#contact" onClick={handleSectionLinkClick('contact')}>Contact Me</a>
                   </Button>
                 </div>
               </div>
@@ -220,7 +215,7 @@ const About = () => {
           </motion.div>
         </motion.div>
       </div>
-    </div>
+    </section>
   );
 };
 

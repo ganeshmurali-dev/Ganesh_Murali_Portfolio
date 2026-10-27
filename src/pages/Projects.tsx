@@ -4,7 +4,7 @@ import { useRef } from 'react';
 import { ExternalLink, Github, Code2, Figma, Database, Store, Camera, Globe, RefreshCw, Smartphone, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import BentoCard from '@/components/BentoCard';
-import Seo from '@/components/Seo';
+import { handleSectionLinkClick } from '@/lib/scroll';
 
 const Projects = () => {
   const ref = useRef(null);
@@ -179,12 +179,7 @@ const Projects = () => {
   };
 
   return (
-    <div className="min-h-screen pt-28 pb-16">
-      <Seo
-        title="Projects — Ganesh Murali"
-        description="A showcase of projects by Ganesh Murali including AstroSure.ai, freelance web builds, UI/UX case studies, and CMS migrations."
-        path="/projects"
-      />
+    <section id="projects" className="scroll-mt-20 pt-20 pb-16">
       <div className="container mx-auto px-4">
         <motion.div
           ref={ref}
@@ -280,7 +275,7 @@ const Projects = () => {
                 I'm always excited to work on new projects and collaborate with talented teams.
                 Let's create something amazing together!
               </p>
-              <a href="/contact">
+              <a href="#contact" onClick={handleSectionLinkClick('contact')}>
                 <Button size="lg" className="btn-hero group">
                   Let's Build Something Great
                   <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
@@ -290,7 +285,7 @@ const Projects = () => {
           </div>
         </motion.div>
       </div>
-    </div>
+    </section>
   );
 };
 

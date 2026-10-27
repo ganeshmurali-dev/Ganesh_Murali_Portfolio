@@ -14,9 +14,8 @@ import {
   MapPin,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Link } from 'react-router-dom';
 import BentoCard from '@/components/BentoCard';
-import Seo from '@/components/Seo';
+import { handleSectionLinkClick } from '@/lib/scroll';
 
 const Home = () => {
   const socialLinks = [
@@ -36,12 +35,7 @@ const Home = () => {
   };
 
   return (
-    <div className="relative">
-      <Seo
-        title="Ganesh Murali — Frontend & Mobile Developer"
-        description="Frontend & React Native developer with 3+ years building web and mobile products. Explore my work in React.js, Next.js, TypeScript, and AI-powered apps."
-        path="/"
-      />
+    <section id="home" className="relative scroll-mt-20">
       {/* Hero */}
       <div className="min-h-screen flex items-center justify-center relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-hero opacity-30" />
@@ -119,18 +113,18 @@ const Home = () => {
                 transition={{ duration: 0.8, delay: 0.8 }}
                 className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
               >
-                <Link to="/projects">
+                <a href="#projects" onClick={handleSectionLinkClick('projects')}>
                   <Button size="lg" className="btn-hero group">
                     Explore My Work
                     <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
                   </Button>
-                </Link>
+                </a>
 
-                <Link to="/contact">
+                <a href="#contact" onClick={handleSectionLinkClick('contact')}>
                   <Button variant="outline" size="lg" className="btn-secondary">
                     Get In Touch
                   </Button>
-                </Link>
+                </a>
               </motion.div>
 
               <motion.div
@@ -200,12 +194,13 @@ const Home = () => {
               Cross-platform mobile & web app in a monorepo, built with React Native,
               React Native CLI, Next.js 15 and TypeScript — shipping AI-powered astrology experiences.
             </p>
-            <Link
-              to="/projects"
+            <a
+              href="#projects"
+              onClick={handleSectionLinkClick('projects')}
               className="inline-flex items-center gap-1 text-sm font-mono text-primary hover:gap-2 transition-all duration-200 mt-auto"
             >
               See all projects <ArrowUpRight className="w-4 h-4" />
-            </Link>
+            </a>
           </BentoCard>
 
           {/* Stat */}
@@ -258,7 +253,7 @@ const Home = () => {
           </BentoCard>
 
           {/* CTA banner */}
-          <Link to="/projects" className="sm:col-span-2 lg:col-span-4">
+          <a href="#projects" onClick={handleSectionLinkClick('projects')} className="sm:col-span-2 lg:col-span-4">
             <BentoCard className="flex-row items-center justify-between h-full bg-primary/5 hover:border-primary/60">
               <div>
                 <div className="text-lg font-semibold">View my full project archive</div>
@@ -266,10 +261,10 @@ const Home = () => {
               </div>
               <ArrowRight className="w-6 h-6 text-primary shrink-0" />
             </BentoCard>
-          </Link>
+          </a>
         </motion.div>
       </div>
-    </div>
+    </section>
   );
 };
 

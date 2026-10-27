@@ -1,19 +1,46 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Link, useLocation } from 'react-router-dom';
 import { Moon, Sun, Menu, X, Code2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { SECTION_IDS, handleSectionLinkClick, type SectionId } from '@/lib/scroll';
+
+const navItems: { name: string; id: SectionId; code: string }[] = [
+  { name: 'Home', id: 'home', code: 'home()' },
+  { name: 'About', id: 'about', code: 'about()' },
+  { name: 'Skills', id: 'skills', code: 'skills()' },
+  { name: 'Projects', id: 'projects', code: 'projects()' },
+  { name: 'Contact', id: 'contact', code: 'contact()' },
+];
 
 const DevNavigation = () => {
   const [isDark, setIsDark] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
-  const location = useLocation();
+  const [activeSection, setActiveSection] = useState<SectionId>('home');
 
   useEffect(() => {
     const stored = localStorage.getItem('theme');
     const darkMode = stored ? stored === 'dark' : true;
     setIsDark(darkMode);
     document.documentElement.classList.toggle('dark', darkMode);
+  }, []);
+
+  useEffect(() => {
+    const sections = SECTION_IDS.map((id) => document.getElementById(id)).filter(
+      (el): el is HTMLElement => el !== null
+    );
+    if (sections.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActiveSection(entry.target.id as SectionId);
+        });
+      },
+      { rootMargin: '-45% 0px -50% 0px', threshold: 0 }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
   }, []);
 
   const toggleTheme = () => {
@@ -23,13 +50,10 @@ const DevNavigation = () => {
     localStorage.setItem('theme', newTheme ? 'dark' : 'light');
   };
 
-  const navItems = [
-    { name: 'Home', path: '/', code: 'home()' },
-    { name: 'About', path: '/about', code: 'about()' },
-    { name: 'Skills', path: '/skills', code: 'skills()' },
-    { name: 'Projects', path: '/projects', code: 'projects()' },
-    { name: 'Contact', path: '/contact', code: 'contact()' },
-  ];
+  const goToSection = (id: SectionId) => (e: React.MouseEvent) => {
+    handleSectionLinkClick(id)(e);
+    setIsOpen(false);
+  };
 
   return (
     <motion.header
@@ -41,22 +65,27 @@ const DevNavigation = () => {
       <nav className="container mx-auto max-w-6xl">
         <div className="flex items-center justify-between h-16 px-4 sm:px-6 rounded-2xl border border-border bg-card/70 backdrop-blur-xl shadow-medium">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2 text-xl font-bold shrink-0">
+          <a
+            href="#home"
+            onClick={goToSection('home')}
+            className="flex items-center space-x-2 text-xl font-bold shrink-0"
+          >
             <div className="p-2 rounded-xl bg-gradient-primary">
               <Code2 className="w-5 h-5 text-primary-foreground" />
             </div>
             <span className="gradient-text">{'<GM />'}</span>
-          </Link>
+          </a>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-1 rounded-full border border-border/60 bg-background/40 p-1">
             {navItems.map((item) => (
-              <Link
-                key={item.path}
-                to={item.path}
+              <a
+                key={item.id}
+                href={`#${item.id}`}
+                onClick={goToSection(item.id)}
                 className="relative px-4 py-2 text-sm font-mono rounded-full"
               >
-                {location.pathname === item.path && (
+                {activeSection === item.id && (
                   <motion.span
                     layoutId="activeTab"
                     className="absolute inset-0 rounded-full bg-primary/15 border border-primary/30"
@@ -65,14 +94,14 @@ const DevNavigation = () => {
                 )}
                 <span
                   className={`relative z-10 ${
-                    location.pathname === item.path
+                    activeSection === item.id
                       ? 'text-primary'
                       : 'text-muted-foreground hover:text-foreground'
                   } transition-colors duration-200`}
                 >
                   {item.code}
                 </span>
-              </Link>
+              </a>
             ))}
           </div>
 
@@ -110,22 +139,22 @@ const DevNavigation = () => {
           >
             {navItems.map((item, index) => (
               <motion.div
-                key={item.path}
+                key={item.id}
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: index * 0.06 }}
               >
-                <Link
-                  to={item.path}
-                  onClick={() => setIsOpen(false)}
+                <a
+                  href={`#${item.id}`}
+                  onClick={goToSection(item.id)}
                   className={`block py-2.5 px-4 rounded-xl font-mono text-sm ${
-                    location.pathname === item.path
+                    activeSection === item.id
                       ? 'text-primary bg-primary/10'
                       : 'text-muted-foreground hover:text-foreground hover:bg-muted'
                   } transition-all duration-200`}
                 >
                   {item.code}
-                </Link>
+                </a>
               </motion.div>
             ))}
           </motion.div>

@@ -11,7 +11,6 @@ import {
   type LucideIcon,
 } from 'lucide-react';
 import BentoCard from '@/components/BentoCard';
-import Seo from '@/components/Seo';
 
 type AccentColor = 'primary' | 'accent';
 
@@ -94,12 +93,7 @@ const Skills = () => {
   };
 
   return (
-    <div className="min-h-screen pt-28 pb-16">
-      <Seo
-        title="Skills — Ganesh Murali"
-        description="Explore Ganesh Murali's technical skills: React Native, Next.js, TypeScript, UI/UX design, photography, and CRM/ERP integration development."
-        path="/skills"
-      />
+    <section id="skills" className="scroll-mt-20 pt-20 pb-16">
       <div className="container mx-auto px-4">
         <motion.div
           ref={ref}
@@ -184,7 +178,7 @@ const Skills = () => {
           </motion.div>
         </motion.div>
       </div>
-    </div>
+    </section>
   );
 };
 
