@@ -34,7 +34,7 @@ const Projects = () => {
       icon: Gift,
       status: "Live",
       links: {
-        live: "https://digigift.ganeshmurali.dev/",
+        live: "https://digigift.in/",
       }
     },
     {
